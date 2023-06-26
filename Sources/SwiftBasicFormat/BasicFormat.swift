@@ -407,7 +407,7 @@ open class BasicFormat: SyntaxRewriter {
       }
     }
 
-    if leadingTrivia.indentation(isOnNewline: isInitialToken || previousTokenWillEndWithNewline) == [] {
+    if leadingTrivia.indentation(isOnNewline: isInitialToken || previousTokenWillEndWithNewline) == [] || isInitialToken {
       // If the token starts on a new line and does not have indentation, this
       // is the last non-indented token. Store its indentation level
       anchorPoints[token] = currentIndentationLevel

@@ -393,4 +393,29 @@ final class BasicFormatTest: XCTestCase {
         """
     )
   }
+    
+  func testDeclWithIndentedFirstLine() {
+    let source = """
+      func test() {return 0
+      }
+    
+      get {
+        return 0
+      }
+    """
+    
+    assertFormatted(
+      source: source,
+      expected: """
+        func test() {
+        return 0
+        }
+      
+        get {
+          return 0
+        }
+      """,
+      using: .init(indentationWidth: .spaces(2))
+    )
+  }
 }
